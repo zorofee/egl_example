@@ -187,6 +187,7 @@ int main(){
         exit(EXIT_FAILURE);
     }
 
+
     const GLubyte* ven = glGetString(GL_VENDOR);
     printf("GL_VENDOR=%s\n", ven);
 
@@ -196,6 +197,12 @@ int main(){
     printf("GL_VERSION=%s\n", ver);
     const GLubyte* sl = glGetString(GL_SHADING_LANGUAGE_VERSION);
     printf("GL_SHADING_LANGUAGE_VERSION=%s\n", sl);
+
+    glClearColor(1.0, 0.5, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    uint8_t buf[256*256*3];
+    glReadPixels(0, 0, m_windowWidth, m_windowHeight, GL_RGB,GL_UNSIGNED_BYTE,buf);
+    printf("pix: %d,%d,%d; %d,%d,%d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);
 
 }
 
